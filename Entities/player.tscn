@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://hoijxi2wf30j"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_ub0d8"]
+[ext_resource type="Shader" path="res://shaders/dash.gdshader" id="2_6mq75"]
+[ext_resource type="Texture2D" uid="uid://dae7ylvkp8o3c" path="res://Assets/Sprites/Player1.png" id="2_prprs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dppm7"]
+resource_local_to_scene = true
+shader = ExtResource("2_6mq75")
+shader_parameter/hit_effect = 0.0
+shader_parameter/shake_intensity = 10.0
+shader_parameter/flash_speed = 30.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bs3ul"]
+radius = 11.0
+height = 64.0
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_ub0d8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dppm7")
+texture = ExtResource("2_prprs")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bs3ul")
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
