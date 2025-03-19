@@ -12,7 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_death_barrier_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	$Player.set_position(Vector2(384,592))
+	if body.name == "Player":
+		$Player.set_position(Vector2(384,592))
 
 
 func _on_load_wait_timeout() -> void:

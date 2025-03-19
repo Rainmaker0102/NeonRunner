@@ -17,15 +17,16 @@ radius = 11.0
 height = 64.0
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ub0d8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_dppm7")
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_prprs")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_bs3ul")
 
 [node name="JumpBuffer" type="Timer" parent="."]
