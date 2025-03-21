@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ldq8od4nacrv" path="res://Scripts/player.gd" id="1_ub0d8"]
 [ext_resource type="Shader" uid="uid://bke4jxdi3333" path="res://shaders/dash.gdshader" id="2_6mq75"]
-[ext_resource type="Texture2D" uid="uid://dae7ylvkp8o3c" path="res://Assets/Sprites/Player1.png" id="2_prprs"]
+[ext_resource type="Texture2D" uid="uid://df77dt7stug8a" path="res://Assets/Sprites/Player6.png" id="3_xd3k7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dppm7"]
 resource_local_to_scene = true
@@ -22,7 +22,7 @@ script = ExtResource("1_ub0d8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_dppm7")
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_prprs")
+texture = ExtResource("3_xd3k7")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

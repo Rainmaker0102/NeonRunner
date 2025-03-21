@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED:float = 420.0
-const JUMP_VELOCITY:float = -520.0
+const JUMP_VELOCITY:float = -640.0
 const SLIDE_FACTOR:float = 0.2
 const DASH_FACTOR:float = 10.0
 const JUMP_DEGRADE:float = 4.0
@@ -20,14 +20,16 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		$JumpBuffer.start()
 	if $JumpBuffer.time_left > 0 and is_on_floor():
+	#if $JumpBuffer.time_left > 0:	# Moon Jump
 		velocity.y = JUMP_VELOCITY
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y /= JUMP_DEGRADE
 	
 	# Handle dash
 	if Input.is_action_just_pressed("dash") and can_dash and not is_on_floor():
+	#if Input.is_action_just_pressed("dash") and can_dash:	# Moon Jump
 		velocity.x *= DASH_FACTOR
-		can_dash = false
+		can_dash = false	# Comment this for Moon Jump
 	if is_on_floor():
 		can_dash = true
 	

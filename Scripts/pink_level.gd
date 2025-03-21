@@ -1,6 +1,7 @@
 extends Node2D
 
 const PLAYER_START_LOCATION = Vector2(384,592)
+var next_level = preload("res://Levels/blue_level.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,6 +23,10 @@ func _on_load_wait_timeout() -> void:
 
 
 func _on_virus_pink_body_entered(body: Node2D) -> void:
-	print(body)
 	if body.name == "Player":
 		$Player.set_position(PLAYER_START_LOCATION)
+
+
+func _on_level_door_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		get_tree().change_scene_to_packed(next_level)

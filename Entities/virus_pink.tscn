@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwo8vrc5dt2qk"]
+[gd_scene load_steps=7 format=3 uid="uid://cwo8vrc5dt2qk"]
 
 [ext_resource type="Texture2D" uid="uid://bbhtiidjajh1t" path="res://Assets/Sprites/Virus1.png" id="1_0idyq"]
 [ext_resource type="Script" uid="uid://6dfi2or08nsr" path="res://Scripts/virus.gd" id="1_ut1pp"]
@@ -21,6 +21,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ut1pp"]
+radius = 600.0
+
 [node name="VirusPink" type="CharacterBody2D"]
 position = Vector2(-7, -2)
 collision_layer = 2
@@ -35,7 +38,6 @@ shape = SubResource("CapsuleShape2D_bra6l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_685nl")
-autoplay = "default"
 frame_progress = 0.706919
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -43,6 +45,15 @@ frame_progress = 0.706919
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_bra6l")
+debug_color = Color(0.980092, 0.140467, 0, 0.42)
+
+[node name="Wakebox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wakebox"]
+shape = SubResource("CircleShape2D_ut1pp")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="Wakebox" to="." method="_on_wakebox_body_entered"]
+[connection signal="body_exited" from="Wakebox" to="." method="_on_wakebox_body_exited"]
