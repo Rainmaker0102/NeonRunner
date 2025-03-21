@@ -106,7 +106,6 @@ size = Vector2(7551.5, 66)
 script = ExtResource("1_2qp8m")
 
 [node name="Background" type="Parallax2D" parent="."]
-visible = false
 scroll_scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]

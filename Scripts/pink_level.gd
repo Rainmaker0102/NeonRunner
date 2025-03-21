@@ -27,6 +27,6 @@ func _on_virus_pink_body_entered(body: Node2D) -> void:
 		$Player.set_position(PLAYER_START_LOCATION)
 
 
-func _on_level_door_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		get_tree().change_scene_to_packed(next_level)
+#func _on_level_door_body_entered(body: Node2D) -> void:
+	#if body.name == "Player":
+		#get_tree().change_scene_to_packed(next_level)
