@@ -169,7 +169,6 @@ material = SubResource("ShaderMaterial_3b8sh")
 texture = ExtResource("8_rdk0p")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.5, 0.5)
 limit_left = 0
 limit_right = 7552
 limit_bottom = 720

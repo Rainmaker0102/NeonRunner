@@ -33,8 +33,8 @@ func _on_level_door_body_entered(body: Node2D) -> void:
 
 
 func _on_qr_teleport_1tr_body_entered(body: Node2D) -> void:
-	if $TeleportLock.wait_time != 0.5:
-		$TeleportLock.set_wait_time(0.5)
+	if $TeleportLock.wait_time != 1.0:
+		$TeleportLock.set_wait_time(1.0)
 	if body.name == "Player" and $TeleportLock.time_left == 0.0:
 		$Player.position = $"QRTeleport1-EX".position
 		$TeleportLock.start()
