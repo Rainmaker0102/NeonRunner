@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://e82xakiyidwq"]
+
+[ext_resource type="Script" uid="uid://bffq6ya8gb7sf" path="res://Scripts/upward_stationary_boost.gd" id="1_1ph0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wxsf"]
+size = Vector2(64, 64)
+
+[node name="UpwardStationaryBoost" type="Area2D"]
+script = ExtResource("1_1ph0m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1wxsf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
