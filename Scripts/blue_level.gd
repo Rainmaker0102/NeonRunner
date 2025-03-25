@@ -33,5 +33,12 @@ func _on_level_door_body_entered(body: Node2D) -> void:
 
 
 func _on_qr_teleport_1tr_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and $TeleportLock.time_left == 0.0:
 		$Player.position = $"QRTeleport1-EX".position
+		$TeleportLock.start()
+
+
+func _on_qr_teleport_1ex_body_entered(body: Node2D) -> void:
+	if body.name == "Player" and $TeleportLock.time_left == 0.0:
+		$Player.position = $"QRTeleport1-TR".position
+		$TeleportLock.start()
