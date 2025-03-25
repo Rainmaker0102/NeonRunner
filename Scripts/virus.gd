@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var SPEED:float = 100.0
-var direction:int = -1
+@export var direction:int = -1
 var can_move:bool = false
 
 signal body_entered(body: Node2D)
