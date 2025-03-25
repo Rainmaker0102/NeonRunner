@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED:float = 100.0
+@export var SPEED:float = 100.0
 var direction:int = -1
 var can_move:bool = false
 
