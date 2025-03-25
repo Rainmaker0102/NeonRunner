@@ -5,7 +5,7 @@ const SPEED:float = 420.0
 const JUMP_VELOCITY:float = -640.0
 const SLIDE_FACTOR:float = 0.2
 const DASH_FACTOR:float = 10.0
-const JUMP_DEGRADE:float = 4.0
+const JUMP_DEGRADE:float = 6.4
 var can_dash:bool = true
 var speed_mod:float = 0.0
 var HeightTimer:float = 0.0
@@ -17,11 +17,12 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump"):
-		$JumpBuffer.start()
-	if $JumpBuffer.time_left > 0 and is_on_floor():
+	#if Input.is_action_just_pressed("jump"):
+		#$JumpBuffer.start()
+	#if $JumpBuffer.time_left > 0 and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 	#if $JumpBuffer.time_left > 0:	# Moon Jump
-		velocity.y = JUMP_VELOCITY
+		velocity.y += JUMP_VELOCITY
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y /= JUMP_DEGRADE
 	
