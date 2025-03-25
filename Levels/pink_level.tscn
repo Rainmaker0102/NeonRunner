@@ -193,6 +193,7 @@ shape = SubResource("RectangleShape2D_iuh7d")
 
 [node name="LoadWait" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
 autostart = true
 
 [node name="LevelDoor" parent="." instance=ExtResource("10_3b8sh")]
