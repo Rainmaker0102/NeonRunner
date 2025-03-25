@@ -5,7 +5,7 @@ var next_level = preload("res://Levels/blue_level.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$TeleportLock.set_wait_time(0.1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +33,8 @@ func _on_level_door_body_entered(body: Node2D) -> void:
 
 
 func _on_qr_teleport_1tr_body_entered(body: Node2D) -> void:
+	if $TeleportLock.wait_time != 0.5:
+		$TeleportLock.set_wait_time(0.5)
 	if body.name == "Player" and $TeleportLock.time_left == 0.0:
 		$Player.position = $"QRTeleport1-EX".position
 		$TeleportLock.start()
@@ -42,3 +44,21 @@ func _on_qr_teleport_1ex_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and $TeleportLock.time_left == 0.0:
 		$Player.position = $"QRTeleport1-TR".position
 		$TeleportLock.start()
+
+
+func _on_qr_teleport_2tr_body_entered(body: Node2D) -> void:
+	if body.name == "Player" and $TeleportLock.time_left == 0.0:
+		$Player.position = $"QRTeleport2-EX".position
+		$TeleportLock.start()
+
+
+func _on_qr_teleport_2ex_body_entered(body: Node2D) -> void:
+	if body.name == "Player" and $TeleportLock.time_left == 0.0:
+		$Player.position = $"QRTeleport2-TR".position
+		$TeleportLock.start()
+
+
+func _on_virus_blue_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		$Player.set_position(PLAYER_START_LOCATION)
+	
