@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var SPEED:float = 100.0
 @export var direction:int = -1
+#var direction:int = initial_direction
 var can_move:bool = false
 
 signal body_entered(body: Node2D)
@@ -12,6 +13,7 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 		if is_on_wall():
 			direction *= -1
+			$AnimatedSprite2D.flip_h = false if direction == -1 else true
 		velocity.x = SPEED * direction
 		move_and_slide()
 
