@@ -7,21 +7,24 @@ var can_move:bool = false
 
 signal body_entered(body: Node2D)
 
+func sprite_direction_handle():
+	$AnimatedSprite2D.flip_h = false if direction == -1 else true
+
 func _physics_process(delta: float) -> void:
 	if can_move:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 		if is_on_wall():
 			direction *= -1
-			$AnimatedSprite2D.flip_h = false if direction == -1 else true
+		sprite_direction_handle()
 		velocity.x = SPEED * direction
 		move_and_slide()
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	direction *= -1
-	$AnimatedSprite2D.flip_h = false if direction == -1 else true
-	body_entered.emit(body)
+	if body.name =="Player":
+		direction *= -1
+		body_entered.emit(body)
 
 
 func _on_wakebox_body_entered(body: Node2D) -> void:
